@@ -1,0 +1,9 @@
+{
+  id: board.id,
+  user: board.user, 
+  title: board.title,
+  description: board.description,
+  images: board.images
+
+  
+}

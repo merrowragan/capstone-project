@@ -1,0 +1,6 @@
+{
+  id: image.id,
+  url: image.url,
+  boards: image.boards,
+  categories: image.categories
+}

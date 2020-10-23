@@ -1,0 +1,9 @@
+@images.map do |image|
+  {
+    id: image.id,
+    url: image.url,
+    boards: image.boards,
+    categories: image.categories
+    
+  }
+end 
