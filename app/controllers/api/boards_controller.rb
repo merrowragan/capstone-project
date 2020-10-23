@@ -35,6 +35,17 @@ class Api::BoardsController < ApplicationController
     @board.title = params[:title] || @board.title
     @board.description = params[:description] || @board.description
     # @board.user_id = params[:user_id]
+    if @board.save
+      render "show.json.jb"
+    else 
+      render json: {errors:@board.errors.full_messages}, status: :unprocessable_entity
+    end 
+  end 
+
+  def destroy
+    board = Board.find(params[:id])
+    board.destroy
+    render json: {message: "Board deleted"}
   end 
 
 

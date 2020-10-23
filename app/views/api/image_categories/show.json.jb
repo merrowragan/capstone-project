@@ -1,0 +1,1 @@
+render partial: "image_category.json.jb", locals: {image_category: @image_category}
