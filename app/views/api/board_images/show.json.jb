@@ -1,0 +1,1 @@
+render partial: "board_image.json.jb", locals: {board_image: @board_image}

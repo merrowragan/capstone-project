@@ -1,0 +1,5 @@
+{
+  id: board_image.id,
+  board: board_image.board, 
+  image: board_image.image
+}
