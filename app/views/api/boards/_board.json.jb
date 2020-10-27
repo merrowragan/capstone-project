@@ -1,9 +1,9 @@
 {
   id: board.id,
-  user: board.user, 
+  user_id: board.user.id, 
   title: board.title,
   description: board.description,
-  images: board.images
+  # images: board.images
 
   
 }

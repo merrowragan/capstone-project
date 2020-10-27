@@ -1,8 +1,2 @@
-{
-  id: @user.id,
-  name: @user.name,
-  email: @user.email,
-  pronouns: @user.pronouns,
-  gender: @user.gender,
-  boards: @user.boards
-}
+@user = render partial: "user.json.jb", locals: {user: @user}
+@user 

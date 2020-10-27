@@ -12,7 +12,8 @@ class Api::BoardImagesController < ApplicationController
   def create
     @board_image = BoardImage.new(
       board_id: params[:board_id],
-      image_id: params[:image_id]
+      image_id: params[:image_id],
+      caption: params[:caption]
     )
     if @board_image.save
       render "show.json.jb"
@@ -26,6 +27,7 @@ class Api::BoardImagesController < ApplicationController
 
     @board_image.board_id = params[:board_id] || @board_image.board_id
     @board_image.image_id = params[:image_id] || @board_image.image_id
+    @board_image.caption = params[:caption] || @board_image.caption
 
     if @board_image.save
       render "show.json.jb"

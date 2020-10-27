@@ -18,7 +18,8 @@ class Api::BoardsController < ApplicationController
     @board = Board.new(
       title: params[:title],
       description: params[:description],
-      user_id: params[:user_id]
+      # user_id: params[:user_id]
+      user_id: current_user.id
     )
     if @board.save
       render "show.json.jb"

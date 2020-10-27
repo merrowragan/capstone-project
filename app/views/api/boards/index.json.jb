@@ -4,7 +4,7 @@
     user: board.user, 
     title: board.title,
     description: board.description,
-    images: board.images
+    # images: board.images
   
     
   }

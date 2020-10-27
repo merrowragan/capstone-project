@@ -1,9 +1,9 @@
 class Api::UsersController < ApplicationController
 
-  # before_action :authenticate_user, except: [:create]
+  before_action :authenticate_user, except: [:create]
   
   def create
-    user = User.new(
+    @user = User.new(
       name: params[:name],
       email: params[:email],
       pronouns: params[:pronouns],
@@ -11,10 +11,10 @@ class Api::UsersController < ApplicationController
       password: params[:password],
       password_confirmation: params[:password_confirmation]
     )
-    if user.save
-      render json: { message: "User created successfully" }, status: :created
+    if @user.save
+      render "show.json.jb", status: :created
     else 
-      render json: { errors: user.errors.full_messages }, status: :bad_request
+      render json: { errors: @user.errors.full_messages }, status: :bad_request
     end
   end
 
@@ -24,13 +24,24 @@ class Api::UsersController < ApplicationController
   end 
 
   def update
-    @user = User.find(params[:id]),
+    @user = User.find(params[:id])
+    if @user == current_user
+      @user.name = params[:name] || @user.name
+      @user.email = params[:email] || @user.email
+      @user.pronouns = params[:pronouns] || @user.pronouns
+      @user.gender = params[:gender] || @user.gender 
 
-    @user.name = params[:name] || @user.name
-    @user.email = params[:email] || @user.email
-    @user.password = params[:password] || @user.password
-    @user.pronouns= params[:pronouns] || @user.pronouns
-    @user.gender= params[:gender] || @user.gender
+      if params[:password] 
+        if @user.authenticate(params[:current_password])
+          @user.update(
+            password: params[:password],
+            password_confirmation: params[:password_confirmation]
+          )
+        end 
+
+      end 
+    
+    end
 
     if @user.save
       render "show.json.jb"
