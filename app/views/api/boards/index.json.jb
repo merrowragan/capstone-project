@@ -1,11 +1,20 @@
-@boards.map do |board|
-  {
-    id: board.id,
-    user: board.user, 
-    title: board.title,
-    description: board.description,
-    # images: board.images
+# @boards.map do |board|
+#   {
+#     id: board.id,
+#     user: board.user.name, 
+#     title: board.title,
+#     description: board.description,
+#     # images: board.images
   
     
-  }
+#   }
+# end 
+
+@boards = @boards.map do |board|
+  render partial: "board.json.jb", locals: {board: board}
+
 end 
+
+# @boards.each do |board|
+#   board[:image] = render partial: "/api/images/image.json.jb",  locals: {image: image }
+# end 
