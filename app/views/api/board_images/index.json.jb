@@ -1,8 +1,13 @@
-@board_images.map do |board_image|
-  {
-    id: board_image.id,
-    board: board_image.board, 
-    image: board_image.image,
-    caption: board_image.caption
-  }
+# @board_images.map do |board_image|
+#   {
+#     id: board_image.id,
+#     board: board_image.board, 
+#     image: board_image.image,
+#     caption: board_image.caption
+#   }
+# end 
+
+@board_images = @board_images.map do |board_image|
+  render partial: "board_image.json.jb", locals: {board_image: board_image}
+
 end 

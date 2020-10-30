@@ -1,1 +1,8 @@
-render partial: "category.json.jb", locals: {category: @category}
+category = render partial: "category.json.jb", locals: {category: @category}
+
+
+category[:images] = @category.images.map do |image|
+  render partial: "/api/images/image.json.jb", locals: {image: image }
+end 
+
+category

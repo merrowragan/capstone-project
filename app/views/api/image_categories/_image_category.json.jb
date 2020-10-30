@@ -1,6 +1,6 @@
 {
   id: image_category.id,
-  image: image_category.image,
+  image: image_category.image.url,
   category: image_category.category
  
 }

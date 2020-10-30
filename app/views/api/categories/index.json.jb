@@ -1,7 +1,12 @@
-@categories.map do |category|
-  {
-    id: category.id,
-    name: category.name, 
-    images: category.images
-  }
+# @categories.map do |category|
+#   {
+#     id: category.id,
+#     name: category.name, 
+#     images: category.images
+#   }
+# end 
+
+@categories = @categories.map do |category|
+  render partial: "category.json.jb", locals: {category: category}
+
 end 

@@ -1,9 +1,14 @@
-@images.map do |image|
-  {
-    id: image.id,
-    url: image.url,
-    boards: image.boards,
-    categories: image.categories
+# @images.map do |image|
+#   {
+#     id: image.id,
+#     url: image.url,
+#     boards: image.boards,
+#     categories: image.categories
     
-  }
+#   }
+# end 
+
+@images = @images.map do |image|
+  render partial: "image.json.jb", locals: {image: image}
+
 end 
