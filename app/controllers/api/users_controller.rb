@@ -22,6 +22,8 @@ class Api::UsersController < ApplicationController
     @user = User.find(params[:id])
     if current_user.id == @user.id
       render "show.json.jb"
+    else
+      render json: {errors:@user.errors.full_messages}, status: :unprocessable_entity  
     end 
   end 
 

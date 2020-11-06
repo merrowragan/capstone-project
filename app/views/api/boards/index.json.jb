@@ -11,6 +11,10 @@
 # end 
 
 @boards = @boards.map do |board|
-  render partial: "board.json.jb", locals: {board: board}
+  if board.user_id == current_user.id
+    render partial: "board.json.jb", locals: {board: board}
+  end 
 end 
+
+
 
