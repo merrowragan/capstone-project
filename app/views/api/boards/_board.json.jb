@@ -1,7 +1,7 @@
 {
-  id: board.id,
-  user_name: board.user.name, 
+  id: board.id, 
   title: board.title,
   description: board.description,
+  images: board.images
   
 }

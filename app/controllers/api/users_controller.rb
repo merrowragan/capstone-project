@@ -20,7 +20,9 @@ class Api::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    render "show.json.jb"
+    if current_user.id == @user.id
+      render "show.json.jb"
+    end 
   end 
 
   def update
@@ -30,17 +32,16 @@ class Api::UsersController < ApplicationController
       @user.email = params[:email] || @user.email
       @user.pronouns = params[:pronouns] || @user.pronouns
       @user.gender = params[:gender] || @user.gender 
+    end 
 
-      if params[:password] 
-        if @user.authenticate(params[:current_password])
-          @user.update(
-            password: params[:password],
-            password_confirmation: params[:password_confirmation]
-          )
-        end 
-
+    if params[:password] 
+      if @user.authenticate(params[:current_password])
+        @user.update(
+          password: params[:password],
+          password_confirmation: params[:password_confirmation]
+        )
       end 
-    
+
     end
 
     if @user.save
@@ -52,9 +53,11 @@ class Api::UsersController < ApplicationController
   end 
 
   def destroy
-    user = User.find(params[:id])
-    user.destroy
-    render json: {message: "Account deleted"}
+    @user = User.find(params[:id])
+    if current_user.id == @user.id
+      user.destroy
+      render json: {message: "Account deleted"}
+    end 
   end 
   
 end

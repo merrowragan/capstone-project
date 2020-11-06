@@ -1,16 +1,22 @@
 class Api::BoardsController < ApplicationController
 
-  # before_action :authenticate_user
+  before_action :authenticate_user
 
   def index
-    @boards = Board.all 
+    @boards = Board.all
     render "index.json.jb"
+    
     
   end
 
   def show
     @board = Board.find(params[:id])
-    render "show.json.jb"
+    if @board.user_id == current_user.id
+      render "show.json.jb"
+    else 
+      render json: {errors:@board.errors.full_messages}, status: :unprocessable_entity 
+    end 
+
     
   end
 
@@ -45,8 +51,10 @@ class Api::BoardsController < ApplicationController
 
   def destroy
     board = Board.find(params[:id])
-    board.destroy
-    render json: {message: "Board deleted"}
+    if board.user_id == current_user.id
+      board.destroy
+      render json: {message: "Board deleted"}
+    end 
   end 
 
 

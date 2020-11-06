@@ -4,5 +4,5 @@
   email: user.email,
   pronouns: user.pronouns,
   gender: user.gender,
-  # boards: user.boards
+  
 }
