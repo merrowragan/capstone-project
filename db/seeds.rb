@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-User.create(name: "Jimmy Neutron", email: "jimmy@gmail.com" , pronouns: "he/him" , gender: "trans boy",password_digest: "password")
+User.create(name: "Jimmy Neutron", email: "jimmy@gmail.com" , pronouns: "he/him" , gender: "trans boy", password: "password", password_confirmation: "password")
 User.create(name: "Carla", email: "carla@gmail.com" , pronouns: "they/them" , gender: "girl", password_digest: "password")
 
 Board.create(user_id: 1, title: "Cool Stuff", description: "I love the stuff here")

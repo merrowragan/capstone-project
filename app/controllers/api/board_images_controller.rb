@@ -37,8 +37,8 @@ class Api::BoardImagesController < ApplicationController
   end
 
   def destroy
-    @board_image = BoardImage.find(params[:id])
-    @board_image.destroy
+    board_image = BoardImage.find_by(image_id: params[:image_id], board_id: params[:board_id])
+    board_image.destroy
     render json: {message: "Image successfully deleted from board"}
   end 
   

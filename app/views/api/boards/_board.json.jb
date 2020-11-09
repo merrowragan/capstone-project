@@ -1,7 +1,5 @@
 {
   id: board.id, 
   title: board.title,
-  description: board.description,
-  images: board.images
-  
+  description: board.description
 }

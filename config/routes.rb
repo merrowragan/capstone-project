@@ -31,7 +31,7 @@ Rails.application.routes.draw do
     get "/board_images/:id" => "board_images#show"
     post "/board_images" => "board_images#create"
     patch "/board_images/:id" => "board_images#update"
-    delete "/board_images/:id" => "board_images#destroy"
+    delete "/board_images/:image_id/:board_id" => "board_images#destroy"
 
   end
 end
