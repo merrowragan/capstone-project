@@ -36,11 +36,11 @@ class Api::UsersController < ApplicationController
       @user.gender = params[:gender] || @user.gender 
     end 
 
-    if params[:password] 
+    if params[:new_password] 
       if @user.authenticate(params[:current_password])
         @user.update(
-          password: params[:password],
-          password_confirmation: params[:password_confirmation]
+          password: params[:new_password],
+          password_confirmation: params[:new_password_confirmation]
         )
       end 
 
