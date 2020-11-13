@@ -11,7 +11,12 @@
 # end 
 
 @boards.map do |board|
-  render partial: "board.json.jb", locals: {board: board}
+  board_hash = render partial: "board.json.jb", locals: {board: board}
+
+  board_hash[:images] = board.images.map do |image|
+    render partial: "/api/images/image.json.jb", locals: {image: image}
+  end 
+  board_hash
 end 
 
 

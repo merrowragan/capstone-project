@@ -1,13 +1,16 @@
 # @images.map do |image|
 #   {
 #     id: image.id,
-#     url: image.url,
-#     boards: image.boards,
-#     categories: image.categories
-    
+#     url: image.url
 #   }
 # end 
 
 @images = @images.map do |image|
-  render partial: "image.json.jb", locals: {image: image}
+  image_hash = render partial: "image.json.jb", locals: {image: image}
+
+  image_hash[:categories] = image.categories.map do |category|
+    render partial: "/api/categories/category.json.jb", locals: {category: category}
+  end
+  image_hash
 end
+

@@ -1,7 +1,9 @@
 board = render partial: "board.json.jb", locals: {board: @board}
 
-board[:images] = @board.images.map do |image|
-  render partial: "/api/images/image.json.jb", locals: {image: image }
+board[:board_images] = @board.board_images.order(created_at: :desc).map do |board_image|
+  board_image_hash = render partial: "/api/board_images/board_image.json.jb", locals: {board_image: board_image }
+  board_image_hash[:image] = render partial: "/api/images/image.json.jb", locals: { image: board_image.image }
+  board_image_hash
 end
 
 board

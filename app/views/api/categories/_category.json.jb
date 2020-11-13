@@ -1,5 +1,4 @@
 {
   id: category.id,
-  name: category.name, 
-  # images: category.images
+  name: category.name
 }
