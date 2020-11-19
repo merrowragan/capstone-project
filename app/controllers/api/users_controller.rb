@@ -57,7 +57,7 @@ class Api::UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     if current_user.id == @user.id
-      user.destroy
+      @user.destroy
       render json: {message: "Account deleted"}
     end 
   end 
